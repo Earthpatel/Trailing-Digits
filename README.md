@@ -3,4 +3,4 @@ Make a program that finds the max number of the desired trailing digit  Inputs 
 
 Part of the ICPCC(International Collegiate Programming Contest), which is an algorithmic programming contest for college students
 
-: chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://icpc.global/worldfinals/problems/2020-ICPC-World-Finals/icpc2020.pdf
+https://icpc.global/worldfinals/problems/2020-ICPC-World-Finals/icpc2020.pdf
