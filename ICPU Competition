@@ -1,0 +1,61 @@
+import time 
+
+def multiplication(b, d):
+  for k in range(1, 10):
+    price = str(b * k)
+    if price[-1:] == d:
+      numberofD = 0    
+      for i in range(1, len(price) + 1):
+          if price[-i] == d:
+            numberofD += 1
+          else:
+            break
+      totalPrice = price
+      break
+  return numberofD, totalPrice, k
+
+
+def power10(numOfbundle, numberofD, b, d, maximum, maxBundle):
+  listofPrices = []
+  condi = True
+  while (condi):
+    countTen = 0
+    lenOfd = d * numberofD
+    increment = pow(10, numberofD)
+    if b % 2 == 0:
+        increment = increment // 2
+        countTen = -10 #make it so you can iterate up to 20 times before stopping if no increase trail digit 
+    for bundle in range(numOfbundle, maxBundle, increment):
+      totalPrice = str(bundle * b)
+      countTen = countTen + 1
+      if countTen == 11:
+        condi = False
+        break
+      if totalPrice[-numberofD - 1:] == lenOfd + d:
+        numberofD += 1
+        numOfbundle = bundle
+        listofPrices.append(totalPrice)
+        countTen = 0
+        break
+      if maximum < ((bundle + increment) * b):
+        condi = False
+        break
+  print("The number of doodads to get max bundle price: ", bundle)      
+  print("The max bundle price with trailing digits: ", totalPrice)
+  print("The max number of consecutive zeros: ", numberofD)
+
+b = int(input("Price of bundle: "))
+d = str(input("Desired trailing number: "))
+maximum = int(input("Max price: "))
+maxBundle = maximum // b
+
+start = time.time()
+tupleofValues = multiplication(b, d)
+
+numberofD = tupleofValues[0]
+bundlePrices = int(tupleofValues[1])
+numOfbundle = int(tupleofValues[2])
+
+power10(numOfbundle, numberofD, b, d, maximum, maxBundle)
+end = time.time()
+print("Time of execution  is :", (end-start) * 10**3, "ms")
